@@ -56,17 +56,17 @@ services:
     labels:
       io.balena.features.dbus: 1
 
-  spotify:
-    build: ./plugins/spotify
-    restart: on-failure
-    privileged: true
-    network_mode: host
-    volumes:
-      - spotifycache:/var/cache/raspotify
+#  spotify:
+#    build: ./plugins/spotify
+#    restart: on-failure
+#    privileged: true
+#    network_mode: host
+#    volumes:
+#      - spotifycache:/var/cache/raspotify
 
-  upnp:
-    build: ./plugins/upnp
-    restart: on-failure
-    network_mode: host
-    ports:
-      - 49494:49494
+#  upnp:
+#    build: ./plugins/upnp
+#    restart: on-failure
+#    network_mode: host
+#    ports:
+#      - 49494:49494
