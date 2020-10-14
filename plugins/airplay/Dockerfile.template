@@ -3,7 +3,13 @@ FROM balenalib/%%BALENA_MACHINE_NAME%%-debian:buster
 ENV DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket
 ENV PULSE_SERVER=tcp:localhost:4317
 
-RUN install_packages shairport-sync
+RUN install_packages shairport-sync cec-utils
+
+COPY airplay-scripts/ /usr/src/airplay-scripts/
+RUN chmod +x /usr/src/airplay-scripts/avron.sh
+RUN chmod +x /usr/src/airplay-scripts/avroff.sh
+RUN rm /etc/shairport-sync.conf
+COPY shairport-sync.conf /etc/
 
 COPY start.sh /usr/src/
 
